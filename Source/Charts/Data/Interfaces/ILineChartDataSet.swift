@@ -49,6 +49,12 @@ public protocol ILineChartDataSet: ILineRadarChartDataSet
     /// Resets the circle-colors array and creates a new one
     func resetCircleColors(_ index: Int)
     
+    var circleHoleColors: [NSUIColor] { get set }
+
+    /// - returns: The color at the given index of the DataSet's circle-hole-color array.
+    /// Performs a IndexOutOfBounds check by modulus.
+    func getCircleHoleColor(atIndex: Int) -> NSUIColor?
+    
     /// If true, drawing circles is enabled
     var drawCirclesEnabled: Bool { get set }
     

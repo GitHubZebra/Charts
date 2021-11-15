@@ -109,6 +109,19 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
         circleColors.removeAll(keepingCapacity: false)
     }
     
+    open var circleHoleColors = [NSUIColor]()
+    
+    /// - returns: The color at the given index of the DataSet's circle-hole-color array.
+    /// Performs a IndexOutOfBounds check by modulus.
+    open func getCircleHoleColor(atIndex index: Int) -> NSUIColor? {
+        let size = circleHoleColors.count
+        let index = index % size
+        guard size > 0, index < size else {
+            return circleHoleColor // return the default if the array has no values or index out of bounds
+        }
+        return circleHoleColors[index]
+    }
+    
     /// If true, drawing circles is enabled
     open var drawCirclesEnabled = true
     
