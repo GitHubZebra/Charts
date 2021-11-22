@@ -81,6 +81,9 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     open func getCircleColor(atIndex index: Int) -> NSUIColor?
     {
         let size = circleColors.count
+        if size == 0 {
+            return nil
+        }
         let index = index % size
         if index >= size
         {
@@ -115,6 +118,9 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     /// Performs a IndexOutOfBounds check by modulus.
     open func getCircleHoleColor(atIndex index: Int) -> NSUIColor? {
         let size = circleHoleColors.count
+        if size == 0 {
+            return circleHoleColor
+        }
         let index = index % size
         guard size > 0, index < size else {
             return circleHoleColor // return the default if the array has no values or index out of bounds
